@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Layanan - Balai Besar K3 Jakarta</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets_ppid/images/bbk3_jkt.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#15416b",
+              secondary: "#f8f9fa",
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      .report-card {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .report-card:hover {
+        transform: translateX(10px);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <!-- Navbar -->
+    <nav
+      class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300"
+    >
+      <div
+        class="container mx-auto md:px-0 md:py-0 px-4 py-2 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <img
+            src="assets_ppid/images/bbk3-jakarta-full.png"
+            alt="Logo BBK3 Jakarta"
+            class="h-16 md:h-24 w-auto transition-all"
+          />
+          <span class="text-xl font-bold text-primary tracking-tight"></span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex space-x-8 font-medium items-center">
+          <a href="index.html" class="hover:text-primary transition">Beranda</a>
+          <!-- Profil Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1 hover:text-primary transition focus:outline-none"
+            >
+              <span>Profil</span>
+              <svg
+                class="w-4 h-4 transition-transform group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="absolute left-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 p-2"
+            >
+              <a
+                href="profil_ppid.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Profil PPID</span>
+              </a>
+              <a
+                href="profil_pejabat.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Profil Pejabat</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Informasi Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1 hover:text-primary transition focus:outline-none"
+            >
+              <span>Informasi</span>
+              <svg
+                class="w-4 h-4 transition-transform group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="absolute left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 p-2"
+            >
+              <a
+                href="informasi_berkala.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Informasi Berkala</span>
+              </a>
+              <a
+                href="informasi_serta_merta.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Informasi Serta Merta</span>
+              </a>
+              <a
+                href="informasi_setiap_saat.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Informasi Setiap Saat</span>
+              </a>
+              <a
+                href="informasi_dikecualikan.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Informasi Dikecualikan</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Standar Layanan Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1 hover:text-primary transition focus:outline-none"
+            >
+              <span>Standar Layanan</span>
+              <svg
+                class="w-4 h-4 transition-transform group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="absolute left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100 p-2 max-h-[80vh] overflow-y-auto"
+            >
+              <a
+                href="sop_ppid_pelaksana.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>SOP PPID Pelaksana</span>
+              </a>
+              <a
+                href="regulasi.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Regulasi dan Rancangan</span>
+              </a>
+              <a
+                href="maklumat_keterbukaan.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Maklumat Keterbukaan</span>
+              </a>
+              <a
+                href="prosedur_permohonan.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Prosedur Permohonan</span>
+              </a>
+              <a
+                href="pengajuan_keberatan.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Pengajuan Keberatan</span>
+              </a>
+              <a
+                href="sengketa_informasi.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Sengketa Informasi</span>
+              </a>
+              <a
+                href="jalur_waktu.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Jalur dan Waktu Pelayanan</span>
+              </a>
+              <a
+                href="biaya_pelayanan.html"
+                class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-slate-50 hover:text-primary transition text-sm"
+              >
+                <div
+                  class="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Biaya Pelayanan</span>
+              </a>
+            </div>
+          </div>
+          <a href="laporan.html" class="hover:text-primary transition"
+            >Laporan</a
+          >
+          <a
+            href="https://balaibesark3jakarta.kemnaker.go.id"
+            class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition"
+          >
+            BBK3 Jakarta
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="menu-btn" class="lg:hidden text-primary focus:outline-none">
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              id="menu-icon"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden bg-white/90 backdrop-blur-sm absolute min-h-screen w-full left-0"
+      >
+        <div class="flex flex-col p-6 space-y-4 font-medium">
+          <a href="index.html" class="hover:text-primary transition py-2"
+            >Beranda</a
+          >
+          <!-- Mobile Dropdown Profil -->
+          <div class="flex flex-col">
+            <button
+              id="mobile-profil-btn"
+              class="flex items-center justify-between w-full hover:text-primary transition py-2"
+            >
+              <span>Profil</span>
+              <svg
+                id="mobile-profil-icon"
+                class="w-4 h-4 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div
+              id="mobile-profil-submenu"
+              class="hidden pl-4 flex flex-col space-y-2 pb-4 pt-1 text-sm text-slate-600"
+            >
+              <a href="profil_ppid.html" class="hover:text-primary py-1"
+                >Profil PPID</a
+              >
+              <a href="profil_pejabat.html" class="hover:text-primary py-1"
+                >Profil Pejabat</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile Dropdown Informasi -->
+          <div class="flex flex-col">
+            <button
+              id="mobile-info-btn"
+              class="flex items-center justify-between w-full hover:text-primary transition py-2"
+            >
+              <span>Informasi</span>
+              <svg
+                id="mobile-info-icon"
+                class="w-4 h-4 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div
+              id="mobile-info-submenu"
+              class="hidden pl-4 flex flex-col space-y-2 pb-4 pt-1 text-sm text-slate-600"
+            >
+              <a href="informasi_berkala.html" class="hover:text-primary py-1"
+                >Informasi Berkala</a
+              >
+              <a
+                href="informasi_serta_merta.html"
+                class="hover:text-primary py-1"
+                >Informasi Serta Merta</a
+              >
+              <a
+                href="informasi_setiap_saat.html"
+                class="hover:text-primary py-1"
+                >Informasi Setiap Saat</a
+              >
+              <a
+                href="informasi_dikecualikan.html"
+                class="hover:text-primary py-1"
+                >Informasi Dikecualikan</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile Dropdown Standar Layanan -->
+          <div class="flex flex-col border-b border-slate-100">
+            <button
+              id="mobile-service-btn"
+              class="flex items-center justify-between w-full hover:text-primary transition py-2"
+            >
+              <span>Standar Layanan</span>
+              <svg
+                id="mobile-service-icon"
+                class="w-4 h-4 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div
+              id="mobile-service-submenu"
+              class="hidden pl-4 flex flex-col space-y-2 pb-4 pt-1 text-sm text-slate-600"
+            >
+              <a href="sop_ppid_pelaksana.html" class="hover:text-primary py-1"
+                >SOP PPID Pelaksana</a
+              >
+              <a href="regulasi.html" class="hover:text-primary py-1"
+                >Regulasi dan Rancangan</a
+              >
+              <a
+                href="maklumat_keterbukaan.html"
+                class="hover:text-primary py-1"
+                >Maklumat Keterbukaan</a
+              >
+              <a href="prosedur_permohonan.html" class="hover:text-primary py-1"
+                >Prosedur Permohonan</a
+              >
+              <a href="pengajuan_keberatan.html" class="hover:text-primary py-1"
+                >Pengajuan Keberatan</a
+              >
+              <a href="sengketa_informasi.html" class="hover:text-primary py-1"
+                >Sengketa Informasi</a
+              >
+              <a href="jalur_waktu.html" class="hover:text-primary py-1"
+                >Jalur dan Waktu Pelayanan</a
+              >
+              <a href="biaya_pelayanan.html" class="hover:text-primary py-1"
+                >Biaya Pelayanan</a
+              >
+            </div>
+          </div>
+          <a href="laporan.html" class="hover:text-primary transition py-2"
+            >Laporan</a
+          >
+          <a
+            href="https://balaibesark3jakarta.kemnaker.go.id"
+            class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-opacity-90 transition w-full text-center mt-2"
+          >
+            BBK3 Jakarta
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 bg-slate-50 text-primary relative overflow-hidden">
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mt-2 tracking-tight reveal uppercase">
+          Laporan Layanan
+        </h1>
+        <p class="mt-4 text-slate-600 max-w-2xl mx-auto reveal">
+          Akses transparansi informasi melalui laporan tahunan PPID Balai Besar K3 Jakarta.
+        </p>
+      </div>
+    </header>
+
+    <!-- Laporan Section -->
+    <section class="py-16 md:py-24 bg-white min-h-screen">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto space-y-4">
+          
+          <!-- Report Card 2023 -->
+          <div class="report-card reveal bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-xl hover:border-primary/20 bg-white">
+            <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div class="w-16 h-16 bg-primary text-white rounded-2xl flex flex-col items-center justify-center shrink-0">
+                <span class="text-[10px] uppercase font-bold opacity-70">Tahun</span>
+                <span class="text-lg font-bold">2023</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">Laporan Tahunan Layanan Informasi Publik</h3>
+                <p class="text-slate-500 text-sm mt-1">Status: Tersedia dalam format PDF</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+              <button class="flex-1 md:flex-none px-6 py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition">
+                Lihat Detail
+              </button>
+              <button class="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-opacity-90 transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Unduh
+              </button>
+            </div>
+          </div>
+
+          <!-- Report Card 2022 -->
+          <div class="report-card reveal bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-xl hover:border-primary/20 bg-white">
+            <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div class="w-16 h-16 bg-primary text-white rounded-2xl flex flex-col items-center justify-center shrink-0">
+                <span class="text-[10px] uppercase font-bold opacity-70">Tahun</span>
+                <span class="text-lg font-bold">2022</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">Laporan Tahunan Layanan Informasi Publik</h3>
+                <p class="text-slate-500 text-sm mt-1">Status: Tersedia dalam format PDF</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+              <button class="flex-1 md:flex-none px-6 py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition">
+                Lihat Detail
+              </button>
+              <button class="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-opacity-90 transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Unduh
+              </button>
+            </div>
+          </div>
+
+          <!-- Report Card 2021 -->
+          <div class="report-card reveal bg-slate-50 border border-slate-100 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-xl hover:border-primary/20 bg-white">
+            <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div class="w-16 h-16 bg-primary text-white rounded-2xl flex flex-col items-center justify-center shrink-0">
+                <span class="text-[10px] uppercase font-bold opacity-70">Tahun</span>
+                <span class="text-lg font-bold">2021</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">Laporan Tahunan Layanan Informasi Publik</h3>
+                <p class="text-slate-500 text-sm mt-1">Status: Tersedia dalam format PDF</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+              <button class="flex-1 md:flex-none px-6 py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition">
+                Lihat Detail
+              </button>
+              <button class="flex-1 md:flex-none px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-opacity-90 transition flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Unduh
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 md:pt-20 pb-10">
+      <div class="container mx-auto px-6 text-center">
+        <div class="mb-8">
+          <img
+            src="assets_ppid/images/bbk3-jakarta-full-w.png"
+            alt="Logo"
+            class="h-16 md:h-20 w-auto mx-auto mb-6"
+          />
+          <p class="max-w-md mx-auto opacity-70 text-sm">
+            Pelayanan Informasi Publik Balai Besar K3 Jakarta. Transparan,
+            Akurat, dan Terpercaya.
+          </p>
+        </div>
+        <div class="pt-8 border-t border-slate-800 text-xs">
+          <p>&copy; 2026 Balai Besar K3 Jakarta. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-sm fixed inset-0 z-[60] overflow-y-auto">
+        <div class="flex flex-col p-6 space-y-4 font-medium pt-24">
+            <a href="index.html" class="hover:text-primary transition py-2 text-lg">Beranda</a>
+            <div class="border-b border-slate-100 pb-2">
+                <p class="text-xs uppercase text-slate-400 font-bold mb-2 tracking-wider">Profil</p>
+                <a href="profil_ppid.html" class="block py-2 hover:text-primary">Profil PPID</a>
+                <a href="profil_pejabat.html" class="block py-2 hover:text-primary">Profil Pejabat</a>
+            </div>
+            <div class="border-b border-slate-100 pb-2">
+                <p class="text-xs uppercase text-slate-400 font-bold mb-2 tracking-wider">Informasi</p>
+                <a href="informasi_berkala.html" class="block py-2 hover:text-primary">Informasi Berkala</a>
+                <a href="informasi_serta_merta.html" class="block py-2 hover:text-primary">Informasi Serta Merta</a>
+                <a href="informasi_setiap_saat.html" class="block py-2 hover:text-primary">Informasi Setiap Saat</a>
+                <a href="informasi_dikecualikan.html" class="block py-2 hover:text-primary">Informasi Dikecualikan</a>
+            </div>
+            <div class="border-b border-slate-100 pb-2">
+                <p class="text-xs uppercase text-slate-400 font-bold mb-2 tracking-wider">Standar Layanan</p>
+                <a href="sop_ppid_pelaksana.html" class="block py-2 hover:text-primary">SOP PPID Pelaksana</a>
+                <a href="regulasi.html" class="block py-2 hover:text-primary">Regulasi dan Rancangan</a>
+                <a href="maklumat_keterbukaan.html" class="block py-2 hover:text-primary">Maklumat Keterbukaan</a>
+                <a href="prosedur_permohonan.html" class="block py-2 hover:text-primary">Prosedur Permohonan</a>
+                <a href="pengajuan_keberatan.html" class="block py-2 hover:text-primary">Pengajuan Keberatan</a>
+                <a href="sengketa_informasi.html" class="block py-2 hover:text-primary">Sengketa Informasi</a>
+                <a href="jalur_waktu.html" class="block py-2 hover:text-primary">Jalur dan Waktu Pelayanan</a>
+                <a href="biaya_pelayanan.html" class="block py-2 hover:text-primary">Biaya Pelayanan</a>
+            </div>
+            <a href="laporan.html" class="text-primary font-bold py-2 text-lg">Laporan</a>
+            <a href="https://balaibesark3jakarta.kemnaker.go.id" class="bg-primary text-white px-6 py-4 rounded-2xl font-bold text-center">BBK3 Jakarta</a>
+        </div>
+        <button id="close-menu" class="absolute top-6 right-6 text-primary">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      const revealElements = document.querySelectorAll(".reveal");
+      revealElements.forEach((el) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+      });
+
+      // Mobile Menu Logic
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+      });
+
+      closeBtn.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+      });
+
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          nav.classList.add("shadow-md", "bg-white");
+          nav.classList.remove("bg-white/90");
+        } else {
+          nav.classList.remove("shadow-md", "bg-white");
+          nav.classList.add("bg-white/90");
+        }
+      });
+    </script>
+  </body>
+</html>
