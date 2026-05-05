@@ -671,8 +671,23 @@
       </div>
     </header>
 
+    <!-- Search Section -->
+    <section class="py-8 sticky top-[72px] md:top-[96px] z-40">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto relative reveal">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <input type="text" placeholder="Cari laporan berdasarkan tahun atau nama..." class="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all text-lg">
+            <button class="absolute inset-y-2 right-2 px-6 bg-primary text-white rounded-xl font-bold hover:bg-opacity-90 transition-all">
+                Cari
+            </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Laporan Section -->
-    <section class="py-16 md:py-24 bg-white min-h-screen">
+    <section class="py-16 md:py-24 bg-slate-50 min-h-screen">
       <div class="container mx-auto px-6">
         <div class="max-w-5xl mx-auto space-y-4">
           
@@ -746,6 +761,22 @@
           </div>
 
         </div>
+
+        <!-- Pagination -->
+        <div class="mt-16 flex justify-center reveal">
+          <nav class="flex items-center space-x-2">
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-primary hover:border-primary transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20">1</a>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-600 font-bold hover:text-primary hover:border-primary transition-all">2</a>
+            <span class="px-2 text-slate-400">...</span>
+            <a href="#" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-primary hover:border-primary transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </nav>
+        </div>
+
       </div>
     </section>
 
